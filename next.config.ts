@@ -4,7 +4,7 @@ const nextConfig: NextConfig = {
   output: "standalone",
   devIndicators: {
   },
-  allowedDevOrigins: ["127.0.0.1", /\.trae\.cn$/, /\.agent-sandbox.*\.trae\.cn$/],
+  allowedDevOrigins: ["127.0.0.1", "localhost", ".trae.cn", ".agent-sandbox-bj-a1-gw.trae.cn"],
   turbopack: {
     // 默认开启 Turbopack，添加空配置以消除与 webpack 配置共存时的警告
   },
