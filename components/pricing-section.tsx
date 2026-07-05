@@ -8,10 +8,10 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Badge } from "@/components/ui/badge";
 import { Check, Sparkles, Zap, Shield } from "lucide-react";
 import { useRouter } from "next/navigation";
-import { useUser } from "@/hooks/use-user";
 import { useToast } from "@/hooks/use-toast";
 import { SUBSCRIPTION_TIERS, CREDITS_TIERS } from "@/config/subscriptions";
 import { ProductTier } from "@/types/subscriptions";
+import { createClient } from "@/utils/supabase/client";
 
 interface PricingSectionProps {
   className?: string;
@@ -19,11 +19,20 @@ interface PricingSectionProps {
 
 export function PricingSection({ className }: PricingSectionProps) {
   const router = useRouter();
-  const { user } = useUser();
   const { toast } = useToast();
   const [isProcessing, setIsProcessing] = useState<string | null>(null);
 
   const handlePurchase = async (tier: ProductTier) => {
+    // 在点击时才获取用户，避免组件渲染时初始化 Supabase 客户端导致报错
+    let user: { id: string } | null = null;
+    try {
+      const supabase = createClient();
+      const { data: { user: u } } = await supabase.auth.getUser();
+      user = u;
+    } catch (e) {
+      // Supabase 未配置或不可用，按未登录处理
+    }
+
     if (!user) {
       toast({
         title: "Sign In Required",
@@ -35,7 +44,7 @@ export function PricingSection({ className }: PricingSectionProps) {
     }
 
     setIsProcessing(tier.id);
-    
+
     try {
       const response = await fetch('/api/creem/create-checkout', {
         method: 'POST',
@@ -46,7 +55,7 @@ export function PricingSection({ className }: PricingSectionProps) {
           productId: tier.productId,
           productType: tier.creditAmount ? 'credits' : 'subscription',
           userId: user.id,
-          credits: tier.creditAmount, 
+          credits: tier.creditAmount,
         }),
       });
 
