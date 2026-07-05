@@ -88,7 +88,7 @@ export function PricingSection({ className }: PricingSectionProps) {
 
         <Tabs defaultValue="subscription" className="w-full flex flex-col items-center">
           <TabsList className="mb-8">
-            <TabsTrigger value="subscription">Subscriptions</TabsTrigger>
+            <TabsTrigger value="subscription">Monthly Plans</TabsTrigger>
             <TabsTrigger value="credits">Credit Packs</TabsTrigger>
           </TabsList>
           

@@ -2,6 +2,7 @@
 
 import { Logo } from "./logo";
 import Link from "next/link";
+import { Mail } from "lucide-react";
 
 const footerLinks = [
   {
@@ -20,8 +21,8 @@ const footerLinks = [
   {
     title: "Legal",
     links: [
-      { label: "Privacy", href: "/privacy" },
-      { label: "Terms", href: "/terms" },
+      { label: "Privacy Policy", href: "/privacy" },
+      { label: "Terms of Service", href: "/terms" },
     ],
   },
 ];
@@ -34,9 +35,15 @@ export function Footer() {
           <div className="col-span-full lg:col-span-2">
             <Logo />
             <p className="mt-4 text-sm text-muted-foreground">
-              Starter kit for your next project. Built with Next.js and
-              Creem.io.
+              Create stunning AI-generated images with PixelForge. 
+              Transform your ideas into beautiful artwork in seconds.
             </p>
+            <div className="mt-4 flex items-center gap-2 text-sm text-muted-foreground">
+              <Mail className="w-4 h-4" />
+              <a href="mailto:support@pixelforge.ai" className="hover:text-primary transition-colors">
+                support@pixelforge.ai
+              </a>
+            </div>
           </div>
           <div className="col-span-2 grid grid-cols-2 gap-8 sm:grid-cols-3 lg:col-span-4">
             {footerLinks.map((group) => (
@@ -56,6 +63,9 @@ export function Footer() {
               </div>
             ))}
           </div>
+        </div>
+        <div className="border-t mt-8 pt-8 text-center text-sm text-muted-foreground">
+          <p>&copy; {new Date().getFullYear()} PixelForge AI. All rights reserved.</p>
         </div>
       </div>
     </footer>

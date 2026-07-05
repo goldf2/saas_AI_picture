@@ -11,19 +11,19 @@ const baseUrl = process.env.BASE_URL
 
 export const metadata = {
   metadataBase: new URL(baseUrl),
-  title: "Simple Saas Starter Kit",
-  description: "The ultimate Next.js starter kit with Supabase Auth, Creem Payments, and a production-ready dashboard.",
-  keywords: "Next.js starter kit, SaaS boilerplate, Supabase, Creem payments, TypeScript",
+  title: "PixelForge AI - AI Image Generator",
+  description: "Create stunning AI-generated images with PixelForge. Transform your ideas into beautiful artwork in seconds using advanced AI technology.",
+  keywords: "AI image generator, AI art, image generation, text to image, AI artwork, pixel forge",
   openGraph: {
-    title: "Simple Saas Starter Kit",
-    description: "The ultimate Next.js starter kit with Supabase Auth, Creem Payments, and a production-ready dashboard.",
+    title: "PixelForge AI - AI Image Generator",
+    description: "Create stunning AI-generated images with PixelForge. Transform your ideas into beautiful artwork in seconds using advanced AI technology.",
     type: "website",
     url: baseUrl,
   },
   twitter: {
     card: "summary_large_image",
-    title: "Simple Saas Starter Kit",
-    description: "The ultimate Next.js starter kit with Supabase Auth, Creem Payments, and a production-ready dashboard.",
+    title: "PixelForge AI - AI Image Generator",
+    description: "Create stunning AI-generated images with PixelForge. Transform your ideas into beautiful artwork in seconds using advanced AI technology.",
   },
 };
 
